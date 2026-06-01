@@ -1,0 +1,6 @@
+path: F:/workspace/FishCount/output/yolo_dataset_sampled
+train: images/train
+val: images/val
+
+names:
+  0: fish

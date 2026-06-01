@@ -1,0 +1,17 @@
+{
+  "frames": 49,
+  "total_gt_boxes": 490,
+  "total_pred_boxes": 527,
+  "tp": 362,
+  "fp": 165,
+  "fn": 128,
+  "precision": 0.6869,
+  "recall": 0.7388,
+  "f1": 0.7119,
+  "mean_iou": 0.6497,
+  "count_mae": 0.9184,
+  "count_rmse": 1.3171,
+  "count_accuracy": 0.9082,
+  "conf": 0.1,
+  "eval_iou": 0.5
+}

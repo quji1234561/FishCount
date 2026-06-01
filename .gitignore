@@ -3,7 +3,6 @@
 !.pixi/config.toml
 
 # 输出文件
-output/
 
 # 模型权重
 *.pt
