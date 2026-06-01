@@ -1,0 +1,18 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+# 输出文件
+output/
+
+# 模型权重
+*.pt
+
+# 视频文件
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wmv
+
+data/

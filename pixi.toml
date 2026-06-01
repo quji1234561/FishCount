@@ -1,0 +1,23 @@
+[workspace]
+authors = ["quji1234561 <3090564369@qq.com>"]
+channels = ["conda-forge"]
+name = "FishCount"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+dataset = "python yolo/gt_to_yolo.py --gt data/BT-001/gt/gt.txt --img-dir data/BT-001/img1 --output output/yolo_dataset_BT001 --val-ratio 0.2 --frame-step 5 --max-frames 300 --clean"
+train = "python yolo/train_yolo.py --data output/yolo_dataset_BT001/data.yaml --model yolov8n.pt --epochs 20 --imgsz 416 --batch 8 --project output/yolo_runs --name fish_BT001_yolov8n --exist-ok"
+predict = "python yolo/predict_yolo.py --weights output/yolo_runs/fish_yolov8n/weights/best.pt --source data/BT-001/img1 --imgsz 416 --conf 0.25 --project output/yolo_runs --name predict_fish --exist-ok"
+evaluate = "python yolo/evaluate_yolo.py --weights output/yolo_runs/fish_BT001_yolov8n/weights/best.pt --gt data/BT-003/gt/gt.txt --img-dir data/BT-003/img1 --output output/eval_results_BT003 --imgsz 416 --conf 0.10 --eval-iou 0.5 --frame-step 10 --max-frames 100"
+count = "python yolo/count_fish.py --weights output/yolo_runs/fish_BT001_yolov8n/weights/best.pt --source data/BT-003/img1 --output output/count_results_BT003 --imgsz 416 --conf 0.10"
+tran = "python yolo/frames_to_video.py --input-dir output/count_results_BT003/images --output output/videos/BT003_fish_count_result.mp4 --fps 25"
+ori = "python yolo/frames_to_video.py --input-dir data/BT-003/img1 --output output/videos/BT003_origin.mp4 --fps 25"
+
+[dependencies]
+pillow = ">=10.0.0"
+pytorch = ">=2.0.0,<2.11"
+torchvision = ">=0.17.0,<0.27"
+ultralytics = ">=8.0.0"
+opencv = ">=4.13.0,<5"
+matplotlib = ">=3.10.9,<4"
